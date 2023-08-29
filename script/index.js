@@ -13,7 +13,7 @@ window.onscroll = function () {
 
   frames.forEach((n, i) => {
     zVals.push(i * zSpacing + zSpacing);
-    zVals[i] += delta * -5.5;
+    zVals[i] += delta * -5.4;
     let frame = frames[i];
     let transform = `translateZ(${zVals[i]}px)`;
     let opacity = zVals[i] < Math.abs(zSpacing) / 1.5 ? 1 : 0;
@@ -22,3 +22,22 @@ window.onscroll = function () {
 };
 
 window.scrollTo(0, 1);
+
+// Audio
+
+const soundButton = document.querySelector('.sound-button');
+const audio = document.querySelector('.audio');
+
+soundButton.addEventListener('click', () => {
+  soundButton.classList.toggle('paused');
+  audio.paused ? audio.play() : audio.pause();
+});
+
+// Audio play logic in browser
+window.onfocus = function () {
+  soundButton.classList.contains('paused') ? audio.pause() : audio.play();
+};
+
+window.onblur = function () {
+  audio.pause();
+};
