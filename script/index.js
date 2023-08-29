@@ -1,7 +1,7 @@
 //3D scroll
 
 const zSpacing = -1000;
-let lastPos = zSpacing / 5;
+let lastPos = zSpacing / 4;
 const $frames = document.getElementsByClassName('frame');
 const frames = Array.from($frames);
 const zVals = [];
