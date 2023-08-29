@@ -13,9 +13,12 @@ window.onscroll = function () {
 
   frames.forEach((n, i) => {
     zVals.push(i * zSpacing + zSpacing);
-    zVals[i] += delta * -5;
+    zVals[i] += delta * -5.5;
     let frame = frames[i];
     let transform = `translateZ(${zVals[i]}px)`;
-    frame.setAttribute('style', `transform: ${transform}`);
+    let opacity = zVals[i] < Math.abs(zSpacing) / 1.5 ? 1 : 0;
+    frame.setAttribute('style', `transform: ${transform}; opacity: ${opacity}`);
   });
 };
+
+window.scrollTo(0, 1);
